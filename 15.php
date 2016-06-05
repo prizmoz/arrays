@@ -8,17 +8,30 @@
 $a = [[1, 2],[3, 4]]; Элементами главной диагонали будут 1 и 4;
 
  */
-$arr = [$first=[rand(1,50), rand(1,50)], $second=[rand(1,50), rand(1,50)]];
+
+$n = 20;
+$arr = [];
+
+for ($i=0; $i<$n; $i++){
+    for($j=0; $j<$n; $j++){
+        $arr[$i][$j] = rand(0, 50);
+    }
+}
+
 $table = "<table border = '1' width='auto'>";
-for($i=0; $i<2; $i++){
+for($i=0; $i<$n; $i++){
     $table .= "<tr>"; // кол-во строк == кол-ву массивом внутри $arr
-    for($j=0; $j<2; $j++){
+    for($j=0; $j<$n; $j++){
         $table .= "<td>{$arr[$i][$j]}</td>"; // элементы массивов, которые находятся внутри массива $arr
     }
 }
 echo $table . '</table>';
 
 // выводим диагональ матрицы
+echo 'Диагональ матрицы: ';
+$sum = 0;
 foreach ($arr as $key=>$array) {
-    echo $arr[$key][$key] . $array[$key][$key];
+    echo $arr[$key][$key] . ' ' . $array[$key][$key];
+    $sum +=  $arr[$key][$key] + $arr[$key][$key];
 }
+echo "<br>Сумма эелементов главной диагонали: $sum";
